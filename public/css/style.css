@@ -1,0 +1,27 @@
+.nav-logo{
+    width: 200px;
+    height: 70px;
+    object-fit: contain;
+}
+ .hero{
+    position: relative;
+ }
+
+ .hero::before{
+    content: '';
+    display: block;
+    background-image: url('../assets/hero.svg');
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+ }
+
+
+@keyframes upToDown {
+    from{
+        transform: translateY(-80px);
+    }to{
+        transform: translateY(0);
+    }
+}
