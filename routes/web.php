@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/blogs',BlogController::class);
 
-Route::resource('/blogs/{blog:slug}',BlogController::class);
+Route::get('/blogs/{blog:slug}',[BlogController::class,'show']);
 
+Route::get('/signup',function(){
+    return view('components.signup');
+});
 
+Route::get('/signin',function(){
+    return view('components.signin');
+});
