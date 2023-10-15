@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
     ];
 
@@ -38,6 +39,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['realName'];
+
     /**
      * The attributes that should be cast.
      *
@@ -45,5 +48,17 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed'
     ];
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getUserNameAttribute($value){
+        return ucfirst($value);
+    }
+     public function getRealNameAttribute(){
+        return $this->name .'ha ha';
+         }
 }

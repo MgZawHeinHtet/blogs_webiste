@@ -15,6 +15,9 @@
   </head>
   <body id="home">
   <x-navbar></x-navbar>
+  @if(Session("success"))
+    <p class="alert alert-success">{{session('success')}}</p>
+  @endif
   {{$slot}}
   <x-footer></x-footer>
  <script

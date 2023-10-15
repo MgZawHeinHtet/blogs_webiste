@@ -13,6 +13,11 @@ class Blog extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    } 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
