@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Middleware\AuthMiddleware;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/blogs',BlogController::class);
+Route::resource('/blogs',BlogController::class)->middleware('auth');
 
-Route::get('/blogs/{blog}',[BlogController::class,'show']);
+Route::get('/blogs/{blog}',[BlogController::class,'show'])->middleware(['auth','adminAuth']);
 
 Route::get('/signup',[AuthController::class,'signup']);
 

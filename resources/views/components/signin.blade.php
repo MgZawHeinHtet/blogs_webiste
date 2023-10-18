@@ -31,6 +31,10 @@
                         @csrf
                         <label for="Username">email</label></br>
                         <input value="{{old('email')}}" type="email" name="email" id="" placeholder="Your email"> 
+                        @error('warning')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                      
                         @error('email')
                             <p class="text-danger m-0 p-0">{{$message}}</p>
                         @enderror

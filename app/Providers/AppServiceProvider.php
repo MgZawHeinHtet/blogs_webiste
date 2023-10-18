@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Model::unguard();
+        Model::unguard();
         Paginator::useBootstrapFive();
     }
 }
