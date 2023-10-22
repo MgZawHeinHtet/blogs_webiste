@@ -63,5 +63,11 @@ class User extends Authenticatable
     }
      public function getRealNameAttribute(){
         return $this->name .'ha ha';
-         }
+    }
+    public function subscribeBlogs(){
+        return $this->belongsToMany(Blog::class,'blogs_users');
+    }
+    public function isSubscribe($blog){
+        return $this->subscribeBlogs->contains('id',$blog->id);
+    }
 }

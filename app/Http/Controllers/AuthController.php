@@ -30,7 +30,7 @@ class AuthController extends Controller
             'email' => request('email'),
             'password' => request('password')
         ])){
-            return redirect('/blogs')->with('success',"welcome from creative coder : ".auth()->user()->name);
+            return redirect('/')->with('success',"welcome from creative coder : ".auth()->user()->name);
         }else{
             return redirect('/signin')->withErrors(['password'=>"your password is wrong"])->withInput();
         }
@@ -57,12 +57,12 @@ class AuthController extends Controller
 
         $user = User::create($cleanData);
         auth()->login($user);
-        return redirect('/blogs')->with('success',"welcome from creative coder :".auth()->user()->name);
+        return redirect('/')->with('success',"welcome from creative coder :".auth()->user()->name);
     }
 
     public function logout(){
         
         Auth::logout();
-        return redirect('/signin');
+        return redirect('/');
     }
 }

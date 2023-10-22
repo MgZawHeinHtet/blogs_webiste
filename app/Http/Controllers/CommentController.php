@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\User;
@@ -35,10 +35,8 @@ class CommentController extends Controller
         return redirect("/blogs/{$comment->blog->slug}?page={$page}&edit={$comment->id}");
     }
 
-    public function update(Comment $comment){
-        request()->validate([
-            'body' => ['required','max:300']
-        ]);
+    public function update(Comment $comment,CommentRequest $request){
+     
         $comment->update(['body'=>request('body')]);
         $comment->save();
         
